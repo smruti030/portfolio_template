@@ -1,0 +1,44 @@
+body {
+    background-color: #121212;
+    color: #fff;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+header nav a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: #f0f0f0;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #00CFFF;
+}
+
+h2 {
+    color: #00CFFF;
+}
+
+.btn-info {
+    background-color: #00CFFF;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.progress-bar {
+    background-color: #00CFFF;
+}
+
+footer p {
+    margin: 0;
+}
+
+.middle {
+    margin: auto;
+}
