@@ -147,3 +147,32 @@ body, .site-nav, .skill, .timeline li, .project-card, .facts div { transition: b
 #contact .contact { margin-inline: auto; text-align: center; }
 #contact .contact label { text-align: left; }
 #contact .contact input, #contact .contact textarea { text-align: left; }
+
+/* ===== Round 3 additions ===== */
+.block h2 { text-align: center; }
+.filters { justify-content: center; }
+.timeline { max-width: 760px; margin-inline: auto; }
+.sub { text-align: center; }
+
+.avail { display: inline-flex; align-items: center; gap: .6rem; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: .25rem 1rem; font-size: .9rem; color: var(--muted); margin-bottom: .8rem; }
+.avail:empty { display: none; }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 0 0 rgba(74,222,128,.6); animation: pulse 2s infinite; }
+@keyframes pulse { 70% { box-shadow: 0 0 0 9px rgba(74,222,128,0); } 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); } }
+
+.hire { padding: .4rem 1.2rem; }
+@media (max-width: 991px) { .hire { display: inline-block; margin: .4rem 0; } }
+
+.learning { text-align: center; color: var(--muted); margin-top: 1.5rem; }
+.learning:empty { display: none; }
+
+.pimg { width: 100%; height: 170px; object-fit: cover; border-radius: 12px; margin-bottom: 1rem; transition: transform .4s; }
+.project-card { overflow: hidden; }
+.project-card:hover .pimg { transform: scale(1.04); }
+.more { color: var(--mint); font-size: .9rem; text-decoration: none; }
+.more:hover { text-decoration: underline; }
+
+.quote { margin: 0; height: 100%; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 1.6rem; transition: transform .3s, border-color .3s; }
+.quote:hover { transform: translateY(-6px); border-color: var(--amber); }
+.quote blockquote { margin: 0 0 1rem; position: relative; padding-top: 1.4rem; color: var(--text); }
+.quote blockquote::before { content: "\201C"; position: absolute; top: -.5rem; left: 0; font: 800 3rem "Sora", sans-serif; color: var(--mint); line-height: 1; }
+.quote figcaption b { display: block; } .quote figcaption span { color: var(--muted); font-size: .9rem; }
