@@ -22,7 +22,10 @@
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item"><a class="nav-link" href="#academic">Academics</a></li>
           <li class="nav-item"><a class="nav-link" href="#skill">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
           <li class="nav-item"><a class="nav-link" href="#project">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item"><button id="theme" class="theme-btn" aria-label="Switch theme"><i class="bi bi-sun"></i></button></li>
         </ul>
       </div>
     </div>
@@ -34,7 +37,7 @@
         <p class="hello">Hi, I'm</p>
         <h1>Jhon Smith</h1>
         <p class="role">Masters student and <span id="typed"></span><span class="cursor" aria-hidden="true">|</span></p>
-        <p class="intro">I build clean, useful software and enjoy turning ideas into working projects.</p>
+        <p class="intro" id="intro">I build clean, useful software and enjoy turning ideas into working projects.</p>
         <div class="d-flex flex-wrap gap-3 my-4">
           <a href="#project" class="btn btn-main">See my projects</a>
           <a href="CV.pdf" target="_blank" rel="noopener" class="btn btn-ghost"><i class="bi bi-download"></i> Download CV</a>
@@ -57,11 +60,7 @@
       <div class="col-lg-7">
         <h2>About me</h2>
         <p class="about-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga quisquam adipisci numquam, pariatur ea at? Consequuntur, eius nesciunt ipsa inventore ipsum architecto sequi quaerat ut explicabo cumque minima quod neque autem dolores, distinctio dolorum voluptatem obcaecati reprehenderit perspiciatis.</p>
-        <div class="facts">
-          <div><strong>9.8</strong><span>Masters CGPA</span></div>
-          <div><strong>6</strong><span>Languages</span></div>
-          <div><strong>2+</strong><span>Projects</span></div>
-        </div>
+        <div class="facts" id="facts-grid"></div>
       </div>
       <div class="col-lg-5 d-none d-md-block"><img src="nature.jpg" alt="Nature landscape" class="about-img"></div>
     </div>
@@ -82,15 +81,45 @@
     <div class="row g-3" id="skills-grid"></div>
   </section>
 
+  <section class="container block" id="experience">
+    <h2>Experience and certificates</h2>
+    <ol class="timeline" id="exp-list"></ol>
+  </section>
+
   <section class="container block" id="project">
     <h2>Projects</h2>
+    <div class="filters" id="filters"></div>
     <div class="row g-4" id="projects-grid"></div>
+    <div id="gh-wrap" class="mt-5" hidden>
+      <h3 class="sub">Latest on GitHub</h3>
+      <div class="row g-3" id="gh-grid"></div>
+    </div>
   </section>
+
+  <section class="container block" id="contact">
+    <h2>Get in touch</h2>
+    <form id="contact-form" class="contact" novalidate>
+      <div class="row g-3">
+        <div class="col-md-6"><label for="cname">Name</label><input id="cname" required></div>
+        <div class="col-md-6"><label for="cmail">Email</label><input id="cmail" type="email" required></div>
+        <div class="col-12"><label for="cmsg">Message</label><textarea id="cmsg" rows="4" required></textarea></div>
+      </div>
+      <p id="form-msg" class="form-msg" role="status"></p>
+      <button class="btn btn-main" type="submit">Send message</button>
+    </form>
+  </section>
+
+  <div class="modal fade" id="projModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+    <div class="modal-header"><h3 class="modal-title" id="pm-title"></h3><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+    <div class="modal-body"><div id="pm-tags"></div><p id="pm-text"></p></div>
+    <div class="modal-footer"><a id="pm-live" class="btn btn-main" target="_blank" rel="noopener">Live demo</a><a id="pm-code" class="btn btn-ghost" target="_blank" rel="noopener"><i class="bi bi-github"></i> Code</a></div>
+  </div></div></div>
 
   <footer class="text-center py-4"><p>&copy; <span id="year">2025</span> Jhon Smith</p></footer>
   <button id="toTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
