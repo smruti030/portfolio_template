@@ -1,4 +1,4 @@
-const { roles, stats, skills, experience, projects, github, email } = DATA;
+const { available, learning, testimonials, roles, stats, skills, experience, projects, github, email } = DATA;
 const $ = id => document.getElementById(id);
 const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const tagList = a => a.map(t => `<span class="tag">${esc(t)}</span>`).join("");
@@ -13,8 +13,14 @@ $("theme").onclick = () => { const t = root.dataset.theme === "dark" ? "light" :
 // ----- Build content from data.js -----
 $("facts-grid").innerHTML = stats.map(s => `<div><strong data-to="${s.value}" data-dec="${s.decimals || 0}" data-suf="${s.suffix || ""}">0</strong><span>${esc(s.label)}</span></div>`).join("");
 $("skills-grid").innerHTML = skills.map(s => `<div class="col-6 col-lg-4"><div class="skill"><div class="skill-top"><span>${esc(s.name)}</span><b>${s.level}%</b></div><div class="bar"><i data-level="${s.level}" style="--w:${s.level}%"></i></div></div></div>`).join("");
-$("exp-list").innerHTML = experience.map(e => `<li><span class="years">${esc(e.when)}</span><h3>${esc(e.title)}</h3><p>${esc(e.where)}</p><p>${esc(e.text)}</p></li>`).join("");
-$("projects-grid").innerHTML = projects.map((p, i) => `<div class="col-md-6 col-lg-4 pj" data-cat="${esc(p.category)}"><div class="project-card" data-i="${i}" tabindex="0" role="button"><h3>${esc(p.title)} <i class="bi bi-arrow-up-right"></i></h3><div>${tagList(p.tools)}</div><p>${esc(p.text)}</p></div></div>`).join("");
+$("exp-list").innerHTML = experience.map(e => `<li><span class="years">${esc(e.when)}</span><h3>${esc(e.title)}</h3><p>${esc(e.where)}</p><p>${esc(e.text)}</p>${e.link ? `<a class="more" href="${esc(e.link)}" target="_blank" rel="noopener">View certificate <i class="bi bi-box-arrow-up-right"></i></a>` : ""}</li>`).join("");
+$("projects-grid").innerHTML = projects.map((p, i) => `<div class="col-md-6 col-lg-4 pj" data-cat="${esc(p.category)}"><div class="project-card" data-i="${i}" tabindex="0" role="button">${p.image ? `<img class="pimg" src="${esc(p.image)}" alt="Screenshot of ${esc(p.title)}" loading="lazy">` : ""}<h3>${esc(p.title)} <i class="bi bi-arrow-up-right"></i></h3><div>${tagList(p.tools)}</div><p>${esc(p.text)}</p></div></div>`).join("");
+
+// ----- Availability, learning strip, testimonials -----
+$("avail").innerHTML = available ? `<span class="dot"></span>${esc(available)}` : "";
+$("learning").innerHTML = learning.length ? `Currently learning: ${tagList(learning)}` : "";
+$("quotes").innerHTML = testimonials.map(q => `<div class="col-md-6"><figure class="quote"><blockquote>${esc(q.text)}</blockquote><figcaption><b>${esc(q.name)}</b><span>${esc(q.role)}</span></figcaption></figure></div>`).join("");
+$("testimonials").hidden = !testimonials.length;
 
 // ----- Project filter -----
 const cats = ["All", ...new Set(projects.map(p => p.category))];
